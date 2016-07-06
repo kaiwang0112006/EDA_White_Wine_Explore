@@ -569,7 +569,7 @@ p1 = ggplot(aes(x=fixed.acidity,y=volatile.acidity, color=quality),
            data = wine)+
            geom_jitter()+
            xlab("Fixed acidity (g/dm^3)")+
-           ylab("Volatile acidity g/dm^3")+
+           ylab("Volatile acidity (g/dm^3)")+
            ggtitle("fixed vs. volatile acidity\n colored by quality")+
            geom_smooth(method = "lm", se = FALSE,size=1)
 p2 = ggplot(aes(x=quality,y=(fixed.acidity/volatile.acidity)), data = wine)+
@@ -593,15 +593,15 @@ p1 = ggplot(aes(x=quality, y=alcohol), data = wine)+
                     alcohol),
                 method = "lm", 
                 se = FALSE,size=2)+
-  ylab("Alcohol")+
+  ylab("Alcohol (%)")+
   xlab("Quality")+
   ggtitle("Boxplot of alcohol with quality")
 
 p2 = ggplot(aes(x=quality_bucket, y=alcohol), data = wine)+
   geom_boxplot()+
   geom_jitter( alpha = .07)+
-  ylab("Alcohol")+
-  xlab("Quality")+
+  ylab("Alcohol (%)")+
+  xlab("Quality (g/cm^3)")+
   geom_smooth(aes(as.numeric(wine$quality_bucket), alcohol),
                 method = "lm", 
                 se = FALSE,size=2)+
@@ -619,8 +619,8 @@ ggplot(aes(x=alcohol, y=density,color=quality_bucket), data=wine)+
   geom_point(position=position_jitter())+
   ylim(min(wine$density),quantile(wine$density,0.99))+
   geom_smooth(method = "lm", se = FALSE,size=1)+
-  xlab("Alcohol")+
-  ylab("Density")+
+  xlab("Alcohol (%)")+
+  ylab("Density (g/cm^3)")+
   ggtitle("Alcohol and density")
 ```
 
